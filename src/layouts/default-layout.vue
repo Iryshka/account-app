@@ -3,13 +3,19 @@
     <header>
       <default-header />
     </header>
-    <main></main>
+    <main>
+      <main-content />
+      <slot />
+    </main>
     <footer>
       <default-footer />
     </footer>
   </div>
 </template>
+
 <script setup>
-import DefaultHeader from '../components/layouts/default/DefaultHeader.vue'
-import DefaultFooter from '../components/layouts/default/DefaultFooter.vue'
+// Components
+import MainContent from '@/components/layouts/MainContent.vue'
+import DefaultHeader from '@/components/layouts/DefaultHeader.vue'
+import DefaultFooter from '@/components/layouts/DefaultFooter.vue'
 </script>
