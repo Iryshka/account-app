@@ -1,8 +1,9 @@
 <template>
   <div class="header container">
-    <h2 class="logo">enty</h2>
+    <h1 class="logo">enty</h1>
 
-    <default-nav />
+    <default-nav v-if="isMobile" modifier="mobile" />
+    <default-nav v-else modifier="desktop" />
 
     <div class="burger">
       <span class="burger-line-up"></span>
@@ -14,6 +15,12 @@
 <script setup>
 import DefaultNav from '../ui/DefaultNav.vue'
 import DefaultButton from '../ui/DefaultButton.vue'
+import useWindowSize from '@/composables/useWindowSize'
+import { computed } from 'vue'
+
+const { windowSize } = useWindowSize()
+
+const isMobile = computed(() => windowSize.value === 'xs')
 </script>
 <style lang="scss">
 body {

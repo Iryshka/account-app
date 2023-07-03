@@ -17,11 +17,3 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
-
-const burger = document.querySelector('.burger')
-const navList = document.querySelector('.list-mobile')
-const navlinks = document.querySelector('')
-
-burger.addEventListener('click', () => {
-  navList.classList.toggle('active')
-})
