@@ -1,15 +1,15 @@
 <template>
-  <hero class="hero container">
+  <div class="hero container">
     <div class="hero__text">
       <h1 class="hero__title">Accounting for Estonian Company</h1>
       <p class="hero__paragraph1">Don’t sweat yourself with Accounting!</p>
       <p class="hero__paragraph2">Save time and money with Enty</p>
-      <default-button text="Let's Start" theme="secondary" />
+      <default-button theme="secondary">Let's Start</default-button>
     </div>
-  </hero>
+  </div>
 </template>
 <script setup>
-import DefaultButton from '../ui/DefaultButton.vue'
+import DefaultButton from '@/components/ui/DefaultButton.vue'
 </script>
 
 <style scoped lang="scss">

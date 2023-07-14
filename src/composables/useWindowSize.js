@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 const WINDOW_SIZES = {
   xs: 375,
@@ -6,26 +6,26 @@ const WINDOW_SIZES = {
   m: 1024,
   l: 1440
 }
-export default function useWindowSize() {
-  const windowSize = ref(null)
 
-  const windowWidth = window.innerWidth
-  for (const key in WINDOW_SIZES) {
-    if (Number(windowWidth) <= WINDOW_SIZES[key]) {
-      windowSize.value = key
-      break
-    }
-  }
-
-  // const modifier = ref(window.innerWidth >= 820 ? 'desktop' : 'mobile')
-  //
-  // function handleWindowResize() {
-  //   modifier.value = window.innerWidth >= 820 ? 'desktop' : 'mobile'
-  // }
-  //
-  // onMounted(() => {
-  //   window.addEventListener('resize', handleWindowResize)
-  // })
-
-  return { windowSize }
-}
+// export default function useWindowSize() {
+//   window.addEventListener('resize', (e) => {
+//     self.innerWidth = window.innerWidth
+//   })
+//
+//   const test = ref(window.innerWidth)
+//
+//   watch(test, () => console.log(test.value))
+//
+//   return { windowSize }
+// }
+//
+// function getCurrentSize() {
+//   let windowSize = null
+//
+//   for (const key in WINDOW_SIZES) {
+//     if (Number(window.innerWidth) <= WINDOW_SIZES[key]) {
+//       windowSize = key
+//       break;
+//     }
+//   }
+// }

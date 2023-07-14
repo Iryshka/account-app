@@ -10,7 +10,7 @@ const app = createApp(App)
 // import DefaultHeader from '@/components/layouts/DefaultHeader.vue'
 // app.component('DefaultHeader', DefaultHeader)
 
-// import MainContent from '@/components/layouts/MainContent.vue'
+// import MainContent from '@/components/layouts/TheHero.vue'
 // app.component('MainContent', MainContent)
 
 app.use(createPinia())

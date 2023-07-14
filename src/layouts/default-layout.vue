@@ -15,7 +15,7 @@
 
 <script setup>
 // Components
-import MainContent from '@/components/layouts/MainContent.vue'
-import DefaultHeader from '@/components/layouts/DefaultHeader.vue'
-import DefaultFooter from '@/components/layouts/DefaultFooter.vue'
+import MainContent from '@/components/pages/index/TheHero.vue'
+import DefaultHeader from '@/components/layouts/default-layout/DefaultHeader.vue'
+import DefaultFooter from '@/components/layouts/default-layout/DefaultFooter.vue'
 </script>

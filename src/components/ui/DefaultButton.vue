@@ -1,31 +1,30 @@
 <template>
-  <div>
-    <button :class="['button', `m-${theme}`]" @click="onButton">{{ text }}</button>
-  </div>
+  <button :class="['button', `m-${theme}`]" @click="onButton">
+    <slot />
+  </button>
 </template>
 <script setup>
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 defineProps({
-  text: {
+  size: {
     type: String,
-    required: true
+    default: 'default'
   },
-
   theme: {
     type: String,
-    default: 'primary'
+    default: 'default'
   }
 })
-</script>
-<style scoped lang="scss">
-div {
-  display: none;
 
-  @include breakpoints-up(medium) {
-    display: block;
-  }
+const emit = defineEmits(['onButton'])
+
+function onButton() {
+  emit('onButton')
 }
+</script>
+
+<style scoped lang="scss">
 .button {
   padding: 10px 25px;
   white-space: nowrap;
@@ -33,32 +32,32 @@ div {
   border-radius: 8px;
   font-weight: bold;
   transition: background-color 0.2s ease-in, color 0.2s ease-in, border 0.2s ease-in;
-}
 
-.m-primary {
-  background-color: $white;
-  color: $black;
-  border: 2px solid transparent;
-
-  &:hover {
-    background-color: $black;
-    color: $white;
-    border: 2px solid $white;
-  }
-}
-
-.m-secondary {
-  padding: 20px 50px;
-  color: $white;
-  background-color: $pink;
-  border-radius: 18px;
-  font-size: 24px;
-  border: 3px solid transparent;
-
-  &:hover {
+  .m-primary {
     background-color: $white;
-    color: $pink;
-    border: 3px solid $pink;
+    color: $black;
+    border-color: transparent;
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+      border-color: $white;
+    }
+  }
+
+  .m-secondary {
+    padding: 20px 50px;
+    color: $white;
+    background-color: $pink;
+    border-radius: 18px;
+    font-size: 24px;
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: $white;
+      color: $pink;
+      border: 2px solid $pink;
+    }
   }
 }
 
