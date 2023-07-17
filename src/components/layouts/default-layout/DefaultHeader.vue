@@ -5,29 +5,18 @@
     <default-nav class="mobile" modifier="mobile" />
     <default-nav class="desktop" modifier="desktop" />
 
-    <the-burger />
     <default-button theme="primary">Get Started!</default-button>
+    <the-burger />
   </div>
 </template>
+
 <script setup>
 // Components
 import TheBurger from '@/components/ui/TheBurger.vue'
 import DefaultNav from '@/components/layouts/default-layout/DefaultNav.vue'
 import DefaultButton from '@/components/ui/DefaultButton.vue'
-
-// // Composables
-// import useWindowSize from '@/composables/useWindowSize'
-
-import { computed } from 'vue'
-
-// const { windowSize } = useWindowSize()
-
-// const test = computed(() => window.innerWidth)
-
-// const isMobile = computed(() => {
-//   return windowSize.value === 'xs' || windowSize.value === 's'
-// })
 </script>
+
 <style scoped lang="scss">
 .header {
   display: flex;

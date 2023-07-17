@@ -8,6 +8,11 @@
 
 <script setup>
 import DefaultLayout from '@/layouts/default-layout.vue'
+import TheBurger from '@/components/ui/TheBurger.vue'
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss">
+//body {
+//  margin: 0;
+//}
+</style>

@@ -2,7 +2,7 @@
   <nav :class="['default-nav', `m-${modifier}`]">
     <ul class="list">
       <li v-for="(listItem, index) in listItems" :key="index" class="item">
-        <router-link to="/home" class="link">{{ listItem }}</router-link>
+        <router-link to="#" class="link">{{ listItem }}</router-link>
       </li>
     </ul>
   </nav>
@@ -25,34 +25,6 @@ defineProps({
 .default-nav {
   width: 70%;
   font-size: 16px;
-  //&.m-desktop {
-  //  .list {
-  //    display: flex;
-  //    justify-content: end;
-  //    align-items: flex-end;
-  //    list-style: none;
-  //  }
-  //}
-  //
-  //&.m-mobile {
-  //  display: none;
-  //  .list {
-  //    position: absolute;
-  //    top: 0;
-  //    right: 0;
-  //    display: flex;
-  //    flex-direction: column;
-  //    justify-content: space-evenly;
-  //    align-items: center;
-  //    list-style: none;
-  //    width: 100%;
-  //    height: 100vh;
-  //    margin: 0;
-  //    background-color: $black;
-  //    transform: translateX(100%);
-  //    transition: transform 0.2s ease-in;
-  //  }
-  //}
 }
 
 .mobile {

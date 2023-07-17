@@ -1,4 +1,5 @@
-@import "colors.scss";
-@import 'main';
+@import 'normalize';
+@import "colors";
 @import 'mixins';
-@import 'normalize.scss';
+@import 'main';
+
