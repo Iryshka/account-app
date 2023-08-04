@@ -68,6 +68,7 @@ defineProps({
 .link {
   color: $white;
   text-decoration: none;
+  font-size: 18px;
   padding: 15px;
   cursor: pointer;
   white-space: nowrap;

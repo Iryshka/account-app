@@ -1,12 +1,13 @@
 <template>
-  <div class="hero container">
-    <div class="hero__text">
-      <h1 class="hero__title">Accounting for Estonian Company</h1>
-      <p class="hero__paragraph1">Don’t sweat yourself with Accounting!</p>
-      <p class="hero__paragraph2">Save time and money with Enty</p>
-      <default-button theme="secondary">Let's Start</default-button>
-    </div>
-  </div>
+  <section class="hero container">
+    <h2 class="hero__title">Accounting for Estonian Company</h2>
+    <p class="hero__paragraph">
+      <span class="hero__paragraph-span">Don’t sweat yourself with Accounting!</span> Save time and
+      money with Enty
+    </p>
+
+    <default-button theme="secondary">Let's Start</default-button>
+  </section>
 </template>
 <script setup>
 import DefaultButton from '@/components/ui/DefaultButton.vue'
@@ -18,33 +19,40 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: calc(100dvh - 75px);
   background-color: $black;
-
-  &__text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 120px 0;
-    text-align: center;
-  }
+  text-align: center;
 
   &__title {
-    font-size: 49px;
-    @include breakpoints-up(medium) {
-      font-size: 58px;
-      width: 70%;
-    }
+    font-size: 46px;
     color: $white;
+    margin-bottom: 40px;
+    @include breakpoints-up(small) {
+      font-size: 52px;
+    }
+    @include breakpoints-up(medium) {
+      font-size: 68px;
+    }
+  }
+  &__title-span,
+  &__title-span2 {
+    display: block;
   }
 
-  &__paragraph1,
-  &__paragraph2 {
-    font-size: 24px;
+  &__paragraph {
+    font-size: 22px;
     color: $gray-dark;
+    margin-bottom: 30px;
+    @include breakpoints-up(small) {
+      font-size: 24px;
+    }
+    @include breakpoints-up(medium) {
+      font-size: 28px;
+    }
   }
 
-  &__paragraph2 {
-    margin-bottom: 30px;
+  &__paragraph-span {
+    display: block;
   }
 }
 </style>

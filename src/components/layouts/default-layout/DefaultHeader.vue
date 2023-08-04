@@ -22,7 +22,7 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  height: 75px;
   background-color: $black;
   font-size: 16px;
 }
