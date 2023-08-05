@@ -1,7 +1,10 @@
 <template>
   <div class="advantage-card">
-    <h3>{{ title }}</h3>
-    <p>{{ description }}</p>
+    <div class="advantage-info">
+      <h3 class="advantage-card__title">{{ title }}</h3>
+      <p class="advantage-card__description">{{ description }}</p>
+    </div>
+    <img :src="image" alt="Advantage Image" class="image" />
   </div>
 </template>
 
@@ -21,6 +24,10 @@ const props = defineProps({
     type: String,
     default: undefined
   },
+  image: {
+    type: URL,
+    default: undefined
+  },
   size: {
     type: String,
     default: ''
@@ -36,4 +43,39 @@ const props = defineProps({
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.advantage-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__title {
+    font-size: 40px;
+    font-weight: bolder;
+    line-height: 1.2;
+    margin: 0 auto 10px auto;
+
+    @include breakpoints-up(medium) {
+      font-size: 80px;
+    }
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 55px;
+
+    @include breakpoints-up(medium) {
+      font-size: 24px;
+    }
+  }
+}
+
+.advantage-info {
+  margin: 0 auto;
+}
+
+.image {
+  width: 100%;
+}
+</style>
