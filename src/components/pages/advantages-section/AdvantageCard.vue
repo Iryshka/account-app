@@ -1,10 +1,12 @@
 <template>
   <div class="advantage-card">
-    <div class="advantage-info">
-      <h3 class="advantage-card__title">{{ title }}</h3>
-      <p class="advantage-card__description">{{ description }}</p>
-    </div>
-    <img :src="image" alt="Advantage Image" class="image" />
+    <h3 class="advantage-card__title">{{ title }}</h3>
+    <p class="advantage-card__description">{{ description }}</p>
+  </div>
+
+  <img :src="image" alt="Advantage Image" class="image" />
+  <div class="advantage-card-info">
+    <!--    <img v-if="imageLabel" :src="imageLabel" alt="Advantage Image" class="image" />-->
   </div>
 </template>
 
@@ -25,7 +27,11 @@ const props = defineProps({
     default: undefined
   },
   image: {
-    type: URL,
+    type: String,
+    default: undefined
+  },
+  imageLabel: {
+    type: String,
     default: undefined
   },
   size: {
@@ -49,6 +55,23 @@ const props = defineProps({
   flex-direction: column;
   text-align: center;
 
+  &-info {
+    margin: auto;
+    max-width: 380px;
+
+    @include breakpoints-up(small) {
+      max-width: 580px;
+    }
+
+    @include breakpoints-up(medium) {
+      max-width: 800px;
+    }
+
+    @include breakpoints-up(big) {
+      max-width: 1000px;
+    }
+  }
+
   &__title {
     font-size: 40px;
     font-weight: bolder;
@@ -69,10 +92,6 @@ const props = defineProps({
       font-size: 24px;
     }
   }
-}
-
-.advantage-info {
-  margin: 0 auto;
 }
 
 .image {
