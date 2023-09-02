@@ -12,6 +12,8 @@
 
 <script setup>
 import { defineProps } from 'vue'
+import AdvantageQuestions from '@/components/pages/advantages-section/AdvantageQuestions.vue'
+import AdvantageSwiper from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 
 const props = defineProps({
   id: {

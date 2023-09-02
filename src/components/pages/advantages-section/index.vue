@@ -15,12 +15,53 @@
         />
       </li>
     </ul>
+    <ul>
+      <advantage-radio-button
+        v-for="{ id, label, image } in options"
+        :id="id"
+        :key="id"
+        :label="label"
+        :image="image"
+        :value="image"
+        v-model="activeImage"
+      />
+    </ul>
+    <img :src="activeImage" alt="" />
   </section>
 </template>
 
 <script setup>
 import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.vue'
+import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 import { ref } from 'vue'
+import { useAdvantagesStore } from '@/store/advantages'
+
+const advantageStore = useAdvantagesStore()
+
+const activeImage = ref(null)
+
+const options = ref([
+  {
+    id: 1,
+    label: 'Connect your bank account',
+    image: 'src/assets/images/Group 11990.jpg'
+  },
+  {
+    id: 2,
+    label: 'Issue and send invoices to your clients',
+    image: 'src/assets/images/Group 11990 (1).jpg'
+  },
+  {
+    id: 3,
+    label: 'Upload invoices for the period',
+    image: 'src/assets/images/Group 11992.jpg'
+  },
+  {
+    id: 4,
+    label: 'Our accountant will create and file the report',
+    image: 'src/assets/images/Group 12010.jpg'
+  }
+])
 
 const cards = ref([
   {
@@ -73,7 +114,7 @@ const cards = ref([
   grid-template-columns: 1fr;
   gap: 10px;
   padding: 0 10px;
-  border: 2px solid red;
+
   background-color: $black;
 
   @include breakpoints-up(small) {
@@ -94,7 +135,7 @@ li {
   box-sizing: border-box;
   border-radius: 25px;
   list-style: none;
-  border: 2px solid blue;
+
   padding: 60px 15px 0 15px;
   line-height: 1.4;
   width: 100%;
@@ -150,5 +191,10 @@ li {
   @include breakpoints-up(small) {
     text-align: left;
   }
+}
+
+span {
+  display: block;
+  width: 200px;
 }
 </style>
