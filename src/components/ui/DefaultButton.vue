@@ -1,5 +1,5 @@
 <template>
-  <button :class="['button', 'btn-slide-left', `m-${theme}`]" @click="onButton">
+  <button :class="['button', `m-${theme}`]" @click="onButton">
     <slot />
   </button>
 </template>
@@ -33,13 +33,8 @@ function onButton() {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.5s ease;
-  background: linear-gradient(to left, transparent 50%, $black 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
 
   &:hover {
-    background-position: left bottom;
   }
 }
 
@@ -49,8 +44,6 @@ function onButton() {
   border-color: transparent;
 
   &:hover {
-    color: $white;
-    border-color: $white;
   }
 }
 
@@ -59,12 +52,13 @@ function onButton() {
   color: $white;
   background-color: $pink;
   border-radius: 12px;
-  font-size: 24px;
-  border: 3px solid transparent;
+  font-size: 22px;
+  border: 5px solid transparent;
 
   &:hover {
+    background-color: white;
+    border: 5px solid $pink;
     color: $pink;
-    border: 3px solid $pink;
   }
 }
 

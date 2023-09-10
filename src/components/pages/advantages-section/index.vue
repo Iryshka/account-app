@@ -3,30 +3,28 @@
     <ul class="list container">
       <li
         :class="[`m-${color} m-${size} m-${position}`]"
-        v-for="{ id, title, description, image, imageLabel, color, size, position } in cards"
+        v-for="{ id, title, description, image, color, size, position, buttons } in cards"
         :key="id"
       >
-        <advantage-card
-          :id="id"
-          :title="title"
-          :description="description"
-          :image="image"
-          :image-label="imageLabel"
-        />
+        <advantage-card :id="id" :title="title" :description="description">
+          <div v-if="buttons" class="fourth-advantage-card">
+            <ul>
+              <advantage-radio-button
+                v-for="{ id, label, image } in buttons"
+                :id="id"
+                :key="id"
+                :label="label"
+                :image="image"
+                v-model="activeImage"
+              />
+            </ul>
+            <img :src="activeImage" alt="" />
+          </div>
+          <img v-else :src="image" alt="Advantage Image" class="image" />
+        </advantage-card>
       </li>
     </ul>
-    <ul>
-      <advantage-radio-button
-        v-for="{ id, label, image } in options"
-        :id="id"
-        :key="id"
-        :label="label"
-        :image="image"
-        :value="image"
-        v-model="activeImage"
-      />
-    </ul>
-    <img :src="activeImage" alt="" />
+    <common-plans />
   </section>
 </template>
 
@@ -35,12 +33,14 @@ import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.v
 import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 import { ref } from 'vue'
 import { useAdvantagesStore } from '@/store/advantages'
+import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
+import CommonPlans from '@/components/pages/PlansSection/CommonPlans.vue'
 
 const advantageStore = useAdvantagesStore()
 
 const activeImage = ref(null)
 
-const options = ref([
+const buttonOptions = ref([
   {
     id: 1,
     label: 'Connect your bank account',
@@ -103,7 +103,8 @@ const cards = ref([
     image: 'src/assets/images/select-4-mobile.svg',
     size: 'big',
     color: 'yellow',
-    position: 'top-left'
+    position: 'top-left',
+    buttons: buttonOptions.value
   }
 ])
 </script>
@@ -114,20 +115,11 @@ const cards = ref([
   grid-template-columns: 1fr;
   gap: 10px;
   padding: 0 10px;
-
   background-color: $black;
 
   @include breakpoints-up(small) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 0 50px;
-  }
-
-  @include breakpoints-up(medium) {
-    padding: 0 80px;
-  }
-
-  @include breakpoints-up(medium) {
-    padding: 0 110px;
   }
 }
 
@@ -181,6 +173,10 @@ li {
 
 .m-yellow {
   background-color: $yellow;
+  margin-bottom: 100px;
+  transform: translateX(100px);
+  overflow: hidden;
+  padding: 50px 0 50px 50px;
 }
 
 .m-reverse .advantage-card {
@@ -193,8 +189,25 @@ li {
   }
 }
 
-span {
-  display: block;
-  width: 200px;
+.fourth-advantage-card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  ul {
+    flex: 1;
+    padding-bottom: 130px;
+  }
+
+  img {
+    flex: 1;
+    width: 600px;
+    position: absolute;
+    right: 0;
+  }
+
+  li {
+    padding: 20px 0;
+  }
 }
 </style>

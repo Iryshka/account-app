@@ -4,7 +4,7 @@
     <p class="advantage-card__description">{{ description }}</p>
   </div>
 
-  <img :src="image" alt="Advantage Image" class="image" />
+  <slot />
   <div class="advantage-card-info">
     <!--    <img v-if="imageLabel" :src="imageLabel" alt="Advantage Image" class="image" />-->
   </div>
@@ -12,8 +12,6 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import AdvantageQuestions from '@/components/pages/advantages-section/AdvantageQuestions.vue'
-import AdvantageSwiper from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 
 const props = defineProps({
   id: {
@@ -75,13 +73,13 @@ const props = defineProps({
   }
 
   &__title {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bolder;
     line-height: 1.2;
     margin: 0 auto 10px auto;
 
     @include breakpoints-up(medium) {
-      font-size: 80px;
+      //font-size: 80px;
     }
   }
 
