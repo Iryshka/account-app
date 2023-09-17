@@ -7,7 +7,7 @@
         :key="id"
       >
         <advantage-card :id="id" :title="title" :description="description">
-          <div v-if="buttons" class="fourth-advantage-card">
+          <div v-if="buttons" class="fourth-advantage-card-desktop">
             <ul>
               <advantage-radio-button
                 v-for="{ id, label, image } in buttons"
@@ -24,6 +24,7 @@
         </advantage-card>
       </li>
     </ul>
+
     <common-plans />
   </section>
 </template>
@@ -33,7 +34,6 @@ import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.v
 import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 import { ref } from 'vue'
 import { useAdvantagesStore } from '@/store/advantages'
-import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
 import CommonPlans from '@/components/pages/PlansSection/CommonPlans.vue'
 
 const advantageStore = useAdvantagesStore()
@@ -157,6 +157,10 @@ li {
   }
 }
 
+.image {
+  width: 100%;
+}
+
 // MODIFIER CLASSES
 
 .m-gradient {
@@ -189,7 +193,7 @@ li {
   }
 }
 
-.fourth-advantage-card {
+.fourth-advantage-card-desktop {
   display: flex;
   flex-direction: row;
   position: relative;

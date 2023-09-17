@@ -25,24 +25,27 @@ defineProps({
 .default-nav {
   width: 70%;
   font-size: 16px;
-}
 
-.mobile {
-  .list {
-    position: absolute;
+  &.mobile {
+    position: fixed;
     top: 0;
     right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
+
     width: 100%;
     height: 100vh;
     margin: 0;
     background-color: $black;
     transform: translateX(100%);
     transition: transform 0.2s ease-in;
+  }
+}
+
+.mobile {
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
 

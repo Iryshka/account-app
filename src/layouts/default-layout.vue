@@ -17,5 +17,4 @@
 
 import DefaultHeader from '@/components/layouts/default-layout/DefaultHeader.vue'
 import DefaultFooter from '@/components/layouts/default-layout/DefaultFooter.vue'
-import TheHero from '@/components/pages/index/TheHero.vue'
 </script>
