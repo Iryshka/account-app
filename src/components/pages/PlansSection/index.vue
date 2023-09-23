@@ -3,7 +3,17 @@
     <h2 class="plans__title">We’ll help you choose the package that suits exactly what you need</h2>
     <p class="plans__question">Do you have a VAT number?</p>
     <plans-dropdown-select :options="options" class="mobile" />
-    <plans-buttons class="desktop" />
+
+    <ul class="desktop">
+      <plans-radio-button
+        v-for="{ id, label } in options"
+        :id="id"
+        :key="id"
+        :label="label"
+        class="plans__radio"
+        v-model="activeOption"
+      />
+    </ul>
 
     <ul class="plans__list">
       <li v-for="card in cards" :key="card.id" class="plans__item">
@@ -25,11 +35,30 @@
 <script setup>
 import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
 import PlansDropdownSelect from '@/components/pages/PlansSection/PlansDropdownSelect.vue'
-import PlansButtons from '@/components/pages/PlansSection/PlansButtons.vue'
+import PlansRadioButton from '@/components/pages/PlansSection/PlansRadioButton.vue'
 
 import { ref } from 'vue'
 
-const options = ref(['I have VAT number', 'No VAT number', 'E-commerce business', "I don't know"])
+const activeOption = ref({})
+
+const options = ref([
+  {
+    id: 1,
+    label: 'I have VAT number'
+  },
+  {
+    id: 2,
+    label: 'No VAT number'
+  },
+  {
+    id: 3,
+    label: 'E-commerce business'
+  },
+  {
+    id: 4,
+    label: "I don't know"
+  }
+])
 
 const cards = ref([
   {
@@ -91,43 +120,40 @@ const cards = ref([
 
   &__question {
     font-size: 26px;
+    margin-bottom: 30px;
   }
 
   &__list {
     display: flex;
+    flex-direction: column;
     list-style: none;
-    padding: 50px 0;
-  }
-
-  &__button {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-
-    @include breakpoints-up(small) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    padding: 20px 0;
 
     @include breakpoints-up(medium) {
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-content: center;
-      align-items: center;
+      flex-direction: row;
     }
   }
-}
 
-.default-button {
-  margin: 5px;
-  width: 230px;
+  &__radio {
+    width: 230px;
+  }
 }
 
 .desktop {
   display: none;
+
   @include breakpoints-up(small) {
-    display: block;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoints-up(medium) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    justify-content: center;
+    align-items: center;
   }
 }
 

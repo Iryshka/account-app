@@ -24,7 +24,7 @@
         </advantage-card>
       </li>
     </ul>
-
+    <advantage-card-desktop-content />
     <common-plans />
   </section>
 </template>
@@ -32,11 +32,11 @@
 <script setup>
 import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.vue'
 import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
-import { ref } from 'vue'
-import { useAdvantagesStore } from '@/store/advantages'
+
 import CommonPlans from '@/components/pages/PlansSection/CommonPlans.vue'
 
-const advantageStore = useAdvantagesStore()
+import { ref } from 'vue'
+import AdvantageCardDesktopContent from '@/components/pages/advantages-section/AdvantageCardDesktopContent.vue'
 
 const activeImage = ref(null)
 

@@ -17,7 +17,7 @@
 <script setup>
 import DefaultButton from '@/components/ui/DefaultButton.vue'
 
-const props = defineProps({
+defineProps({
   id: {
     type: Number,
     default: undefined

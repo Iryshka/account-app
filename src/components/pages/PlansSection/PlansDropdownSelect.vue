@@ -1,21 +1,23 @@
 <template>
   <div class="dropdown">
-    <div class="dropdown-wrapper" ref="dropDown">
-      <div @click="toggleDropdownVisible" class="dropdown-selected-option">
-        {{ selectedOption || 'Choose an answer' }}
-      </div>
+    <div
+      @click="toggleDropdownVisible"
+      :class="['dropdown-selected-option', { placeholder: !selectedOption }]"
+      ref="dropDown"
+    >
+      {{ chosenOption.label }}
     </div>
     <transition name="fade">
-      <div v-if="isDropdownVisible" class="option-wrapper">
-        <div
+      <ul v-show="isDropdownVisible" class="option-wrapper">
+        <li
           v-for="(option, index) in filteredOptions"
           :key="index"
           class="option"
           @click="toggleOptionSelect(option)"
         >
-          {{ option }}
-        </div>
-      </div>
+          {{ option.label }}
+        </li>
+      </ul>
     </transition>
   </div>
 </template>
@@ -23,25 +25,32 @@
 <script setup>
 import { ref, defineProps, computed, onMounted, onBeforeMount } from 'vue'
 
+const props = defineProps({
+  options: {
+    type: Array,
+    default: () => []
+  }
+})
+
 const isDropdownVisible = ref(false)
 
 const selectedOption = ref(null)
 
 const dropDown = ref(null)
 
-const closeDropDown = (element) => {
+const chosenOption = computed(() =>
+  selectedOption.value ? selectedOption.value : { label: 'Chose your card' }
+)
+
+// const chosenOption = computed(() => {
+//   return selectedOption.value || 'Chose your card'
+// })
+
+function closeDropDown(element) {
   if (!dropDown.value.contains(element.target)) {
     isDropdownVisible.value = false
   }
 }
-
-const props = defineProps({
-  options: {
-    type: Array,
-    default: () => [],
-    required: true
-  }
-})
 
 function toggleDropdownVisible() {
   isDropdownVisible.value = !isDropdownVisible.value
@@ -49,7 +58,7 @@ function toggleDropdownVisible() {
 
 function toggleOptionSelect(option) {
   selectedOption.value = option
-  isDropdownVisible.value = !isDropdownVisible.value
+  toggleDropdownVisible()
 }
 
 const filteredOptions = computed(() =>
@@ -66,19 +75,19 @@ onBeforeMount(() => {
 </script>
 
 <style lang="scss" scoped>
-.dropdown-wrapper {
+.dropdown {
   padding: 16px;
   cursor: pointer;
   width: 230px;
   max-width: 230px;
-  margin: 50px auto 0 auto;
-  border: 1px solid $gray-dark;
-  border-radius: 8px;
+  margin: 0 auto;
   text-align: center;
-}
 
-.dropdown-selected-option {
-  padding: 4px;
+  &-selected-option {
+    padding: 16px;
+    border: 1px solid $gray-dark;
+    border-radius: 8px;
+  }
 }
 
 .option-wrapper {

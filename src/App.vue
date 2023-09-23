@@ -8,11 +8,6 @@
 
 <script setup>
 import DefaultLayout from '@/layouts/default-layout.vue'
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  console.log(DefaultLayout)
-})
 </script>
 
 <style lang="scss">

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 const index = () => import('@/pages/index.vue')
-const login = () => import('@/pages/login/index.vue')
 
 const advantages = () => import('@/components/pages/advantages-section/index.vue')
 
@@ -13,11 +12,6 @@ const router = createRouter({
       path: '/',
       name: 'index',
       component: index
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: login
     },
     {
       path: '/advantages',
