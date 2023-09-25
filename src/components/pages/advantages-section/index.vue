@@ -7,7 +7,7 @@
         :key="id"
       >
         <advantage-card :id="id" :title="title" :description="description">
-          <div v-if="buttons" class="fourth-advantage-card-desktop">
+          <div v-if="buttons" class="advantage-card-desktop">
             <ul>
               <advantage-radio-button
                 v-for="{ id, label, image } in buttons"
@@ -24,7 +24,8 @@
         </advantage-card>
       </li>
     </ul>
-    <advantage-card-desktop-content />
+    <advantage-card-mobile-content v-if="windowSize" />
+    <p>{{ windowSize }}</p>
     <common-plans />
   </section>
 </template>
@@ -32,11 +33,14 @@
 <script setup>
 import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.vue'
 import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
-
+import AdvantageCardMobileContent from '@/components/pages/advantages-section/AdvantageCardMobileContent.vue'
 import CommonPlans from '@/components/pages/PlansSection/CommonPlans.vue'
 
+import useWindowSize from '@/composables/useWindowSize.js'
+
+const { windowSize } = useWindowSize()
+
 import { ref } from 'vue'
-import AdvantageCardDesktopContent from '@/components/pages/advantages-section/AdvantageCardDesktopContent.vue'
 
 const activeImage = ref(null)
 
@@ -97,7 +101,7 @@ const cards = ref([
   },
   {
     id: 4,
-    title: 'Unlimited Invoicing, Connection to Bank account, Multi-currency Accounting ',
+    title: 'Unlimited Invoicing, Connection to Bank account, Multi-currency Accounting',
     description:
       'Will help you make accounting even easier. Spend less time and money on boring paperwork ',
     image: 'src/assets/images/select-4-mobile.svg',
@@ -110,6 +114,9 @@ const cards = ref([
 </script>
 
 <style scoped lang="scss">
+.advantages {
+  background-color: $black;
+}
 .list {
   display: grid;
   grid-template-columns: 1fr;
@@ -193,7 +200,7 @@ li {
   }
 }
 
-.fourth-advantage-card-desktop {
+.advantage-card-desktop {
   display: flex;
   flex-direction: row;
   position: relative;

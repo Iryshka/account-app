@@ -1,18 +1,19 @@
 <template>
   <div class="plans__button">
-    <label :for="props.id" class="plans__label">{{ props.options }}</label>
+    <label :for="props.id" class="plans__label">{{ props.label }}</label>
     <input
       type="radio"
       class="plans__input"
       name="plans-radio-buttons"
       :value="props.options"
       v-model="buttonValue"
+      :id="props.id"
     />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { defineProps, computed } from 'vue'
 
 const props = defineProps({
   modelValue: {
@@ -21,6 +22,9 @@ const props = defineProps({
   options: {
     type: Object,
     default: () => {}
+  },
+  label: {
+    type: String
   }
 })
 
@@ -43,6 +47,7 @@ const buttonValue = computed({
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     list-style: none;
   }
 

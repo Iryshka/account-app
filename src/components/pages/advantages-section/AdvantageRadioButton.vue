@@ -1,10 +1,3 @@
-<!--<template>-->
-<!--  <li>-->
-<!--    <label :for="props.id">{{ props.label }}</label>-->
-<!--    <input type="radio" :id="props.id" name="images" :value="props.image" @input="onButton" />-->
-<!--  </li>-->
-<!--</template>-->
-
 <template>
   <li>
     <label :for="props.id">{{ props.label }}</label>
