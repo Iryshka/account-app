@@ -10,6 +10,7 @@ const WINDOW_SIZES = {
 
 export default function () {
   const windowWidth = ref(window.innerWidth)
+
   const windowSize = computed(() => {
     const keys = Object.keys(WINDOW_SIZES)
 
