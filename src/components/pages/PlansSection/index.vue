@@ -2,18 +2,7 @@
   <div class="plans container">
     <h2 class="plans__title">We’ll help you choose the package that suits exactly what you need</h2>
     <p class="plans__question">Do you have a VAT number?</p>
-    <plans-dropdown-select :options="options" class="mobile" />
-
-    <ul class="desktop">
-      <plans-radio-button
-        v-for="{ id, label } in options"
-        :id="id"
-        :key="id"
-        :label="label"
-        class="plans__radio"
-        v-model="activeOption"
-      />
-    </ul>
+    <component :is="currentComponent" :options="options" v-model="currentTab" />
 
     <ul class="plans__list">
       <li v-for="card in cards" :key="card.id" class="plans__item">
@@ -34,10 +23,35 @@
 </template>
 <script setup>
 import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
-import PlansDropdownSelect from '@/components/pages/PlansSection/PlansDropdownSelect.vue'
-import PlansRadioButton from '@/components/pages/PlansSection/PlansRadioButton.vue'
+import useWindowSize from '@/composables/useWindowSize'
+import { ref, onMounted, onBeforeUnmount, defineAsyncComponent } from 'vue'
 
-import { ref } from 'vue'
+const { windowSize } = useWindowSize()
+
+const currentComponent = ref(null)
+
+const currentTab = ref(null)
+
+const handleResize = () => {
+  if (windowSize.value === 'xxs' || windowSize.value === 'xs' || windowSize.value === 's') {
+    currentComponent.value = defineAsyncComponent(() =>
+      import('@/components/pages/PlansSection/PlansDropdownSelectWrapper.vue')
+    )
+  } else {
+    currentComponent.value = defineAsyncComponent(() =>
+      import('@/components/pages/PlansSection/PlansRadioButtonList.vue')
+    )
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+  handleResize()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
+})
 
 const activeOption = ref({})
 

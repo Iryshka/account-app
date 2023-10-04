@@ -42,10 +42,6 @@ const chosenOption = computed(() =>
   selectedOption.value ? selectedOption.value : { label: 'Chose your card' }
 )
 
-// const chosenOption = computed(() => {
-//   return selectedOption.value || 'Chose your card'
-// })
-
 function closeDropDown(element) {
   if (!dropDown.value.contains(element.target)) {
     isDropdownVisible.value = false
