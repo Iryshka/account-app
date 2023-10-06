@@ -24,36 +24,42 @@
 <script setup>
 import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
 import useWindowSize from '@/composables/useWindowSize'
-import { ref, onMounted, onBeforeUnmount, defineAsyncComponent } from 'vue'
+import PlansDropdownSelect from '@/components/pages/PlansSection/PlansDropdownSelect.vue'
+import PlansRadioButtonList from '@/components/pages/PlansSection/PlansRadioButtonList.vue'
+import { ref, computed } from 'vue'
 
 const { windowSize } = useWindowSize()
 
-const currentComponent = ref(null)
+const currentTab = ref({})
 
-const currentTab = ref(null)
+const currentComponent = computed(() =>
+  ['xxs', 'xs', 's'].includes(windowSize.value) ? PlansDropdownSelect : PlansRadioButtonList
+)
 
-const handleResize = () => {
-  if (windowSize.value === 'xxs' || windowSize.value === 'xs' || windowSize.value === 's') {
-    currentComponent.value = defineAsyncComponent(() =>
-      import('@/components/pages/PlansSection/PlansDropdownSelectWrapper.vue')
-    )
-  } else {
-    currentComponent.value = defineAsyncComponent(() =>
-      import('@/components/pages/PlansSection/PlansRadioButtonList.vue')
-    )
-  }
-}
+// const currentComponent = ref(null)
+//
+// const currentTab = ref(null)
+//
+// const handleResize = () => {
+//   if (windowSize.value === 'xxs' || windowSize.value === 'xs' || windowSize.value === 's') {
+//     currentComponent.value = defineAsyncComponent(() =>
+//       import('@/components/pages/PlansSection/PlansDropdownSelectWrapper.vue')
+//     )
+//   } else {
+//     currentComponent.value = defineAsyncComponent(() =>
+//       import('@/components/pages/PlansSection/PlansRadioButtonList.vue')
+//     )
+//   }
+// }
 
-onMounted(() => {
-  window.addEventListener('resize', handleResize)
-  handleResize()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize)
-})
-
-const activeOption = ref({})
+// onMounted(() => {
+//   window.addEventListener('resize', handleResize)
+//   handleResize()
+// })
+//
+// onBeforeUnmount(() => {
+//   window.removeEventListener('resize', handleResize)
+// })
 
 const options = ref([
   {

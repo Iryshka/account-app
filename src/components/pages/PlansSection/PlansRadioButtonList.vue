@@ -1,21 +1,28 @@
 <template>
   <ul class="desktop">
     <plans-radio-button
-      v-for="{ id, label } in options"
-      :id="id"
-      :key="id"
-      :label="label"
-      class="plans__radio"
-      v-model="activeOption"
+      v-for="option in options"
+      :id="option.id"
+      :key="option.id"
+      :label="option.label"
+      :class="['plans__radio', { active: option.id === modelValue.id }]"
+      @click="onButton(option)"
     />
   </ul>
 </template>
 
 <script setup>
 import PlansRadioButton from '@/components/pages/PlansSection/PlansRadioButton.vue'
-import { ref } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue'
 
-const activeOption = ref({})
+const props = defineProps({
+  modelValue: {
+    type: Object,
+    default: () => {}
+  }
+})
+
+const emit = defineEmits(['update:modelValue'])
 
 const options = ref([
   {
@@ -35,6 +42,10 @@ const options = ref([
     label: "I don't know"
   }
 ])
+
+function onButton(option) {
+  emit('update:modelValue', option)
+}
 </script>
 
 <style scoped lang="scss">
@@ -63,5 +74,9 @@ const options = ref([
     width: 0;
     cursor: pointer;
   }
+}
+
+.plans__radio.active {
+  background-color: red;
 }
 </style>
