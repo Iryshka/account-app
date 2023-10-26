@@ -1,54 +1,53 @@
 <template>
-  <div class="plans__button">
-    <label :for="props.id" class="plans__label">{{ props.label }}</label>
+  <div
+    @click="clickOptionSelect"
+    :class="['plans__button', { 'm-active': activeOption.id === option.id }]"
+  >
+    <label :for="props.id" class="plans__label">{{ props.option.label }}</label>
     <input
       type="radio"
       class="plans__input"
       name="plans-radio-buttons"
-      :value="props.options"
-      v-model="buttonValue"
+      :value="props.option"
       :id="props.id"
     />
   </div>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-  modelValue: {
-    type: String
-  },
-  options: {
+  activeOption: {
     type: Object,
     default: () => {}
   },
-  label: {
-    type: String
+  option: {
+    type: Object,
+    default: () => {}
   }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update'])
 
-const buttonValue = computed({
-  get() {
-    return props.modelValue
-  },
-  set(value) {
-    emit('update:modelValue', value)
-  }
-})
+function clickOptionSelect() {
+  console.log('Selected option:')
+  emit('update')
+}
 </script>
 
 <style lang="scss" scoped>
 .plans {
-  .plans__button {
+  &__button {
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     list-style: none;
+  }
+
+  &__button.m-active {
+    background-color: lightpink;
   }
 
   &__label {
@@ -56,6 +55,7 @@ const buttonValue = computed({
     background-color: $white;
     padding: 15px 30px;
     width: 230px;
+    cursor: pointer;
     border-radius: 21px;
     text-align: center;
   }

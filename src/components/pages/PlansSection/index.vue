@@ -2,16 +2,21 @@
   <div class="plans container">
     <h2 class="plans__title">We’ll help you choose the package that suits exactly what you need</h2>
     <p class="plans__question">Do you have a VAT number?</p>
-    <plans-dropdown-select :options="options" class="mobile" />
+    <plans-dropdown-select
+      :options="options"
+      :active-option="activeOption"
+      class="mobile"
+      @update="updateSelect"
+    />
 
     <ul class="desktop">
       <plans-radio-button
-        v-for="{ id, label } in options"
-        :id="id"
-        :key="id"
-        :label="label"
+        v-for="option in options"
+        :key="option.id"
+        :option="option"
         class="plans__radio"
-        v-model="activeOption"
+        :active-option="activeOption"
+        @update="updateRadioButton(option)"
       />
     </ul>
 
@@ -40,6 +45,14 @@ import PlansRadioButton from '@/components/pages/PlansSection/PlansRadioButton.v
 import { ref } from 'vue'
 
 const activeOption = ref({})
+
+function updateSelect(option) {
+  activeOption.value = option
+}
+
+function updateRadioButton(option) {
+  activeOption.value = option
+}
 
 const options = ref([
   {

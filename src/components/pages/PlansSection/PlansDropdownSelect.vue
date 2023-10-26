@@ -2,7 +2,7 @@
   <div class="dropdown">
     <div
       @click="toggleDropdownVisible"
-      :class="['dropdown-selected-option', { placeholder: !selectedOption }]"
+      :class="['dropdown-selected-option', { placeholder: !activeOption }]"
       ref="dropDown"
     >
       {{ chosenOption.label }}
@@ -23,27 +23,31 @@
 </template>
 
 <script setup>
-import { ref, defineProps, computed, onMounted, onBeforeMount } from 'vue'
+import { ref, defineProps, defineEmits, computed, onMounted, onBeforeMount } from 'vue'
 
 const props = defineProps({
   options: {
     type: Array,
     default: () => []
+  },
+  activeOption: {
+    type: Object,
+    default: () => {}
   }
 })
 
-const isDropdownVisible = ref(false)
+const emit = defineEmits(['update'])
 
-const selectedOption = ref(null)
+const isDropdownVisible = ref(false)
 
 const dropDown = ref(null)
 
 const chosenOption = computed(() =>
-  selectedOption.value ? selectedOption.value : { label: 'Chose your card' }
+  props.activeOption.label ? props.activeOption : { label: 'Chose your card' }
 )
 
 // const chosenOption = computed(() => {
-//   return selectedOption.value || 'Chose your card'
+//   return activeOption.value || 'Chose your card'
 // })
 
 function closeDropDown(element) {
@@ -57,12 +61,12 @@ function toggleDropdownVisible() {
 }
 
 function toggleOptionSelect(option) {
-  selectedOption.value = option
   toggleDropdownVisible()
+  emit('update', option)
 }
 
 const filteredOptions = computed(() =>
-  props.options.filter((option) => option !== selectedOption.value)
+  props.options.filter((option) => option !== props.activeOption)
 )
 
 onMounted(() => {
