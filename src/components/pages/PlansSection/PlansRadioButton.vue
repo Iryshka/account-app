@@ -1,7 +1,7 @@
 <template>
   <div
     @click="clickOptionSelect"
-    :class="['plans__button', { 'm-active': activeOption.id === option.id }]"
+    :class="['plans__button', { 'm-active': modelValue.id === option.id }]"
   >
     <label :for="props.id" class="plans__label">{{ props.option.label }}</label>
     <input
@@ -18,7 +18,7 @@
 import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
-  activeOption: {
+  modelValue: {
     type: Object,
     default: () => {}
   },
@@ -28,11 +28,14 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['update'])
+const emit = defineEmits(['update:modelValue'])
 
 function clickOptionSelect() {
-  console.log('Selected option:')
-  emit('update')
+  console.log('Selected option: ', props.option)
+
+  // то то же самое, что, если бы мы в index.vue написали бы
+  // activeOption.value = option
+  emit('update:modelValue', props.option)
 }
 </script>
 

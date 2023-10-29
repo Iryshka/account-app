@@ -2,12 +2,7 @@
   <div class="plans container">
     <h2 class="plans__title">We’ll help you choose the package that suits exactly what you need</h2>
     <p class="plans__question">Do you have a VAT number?</p>
-    <plans-dropdown-select
-      :options="options"
-      :active-option="activeOption"
-      class="mobile"
-      @update="updateSelect"
-    />
+    <plans-dropdown-select :options="options" class="mobile" v-model="activeOption" />
 
     <ul class="desktop">
       <plans-radio-button
@@ -15,8 +10,7 @@
         :key="option.id"
         :option="option"
         class="plans__radio"
-        :active-option="activeOption"
-        @update="updateRadioButton(option)"
+        v-model="activeOption"
       />
     </ul>
 

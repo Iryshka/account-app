@@ -2,10 +2,10 @@
   <div class="dropdown">
     <div
       @click="toggleDropdownVisible"
-      :class="['dropdown-selected-option', { placeholder: !activeOption }]"
+      :class="['dropdown-selected-option', { placeholder: !modelValue.label }]"
       ref="dropDown"
     >
-      {{ chosenOption.label }}
+      {{ currentLabel }}
     </div>
     <transition name="fade">
       <ul v-show="isDropdownVisible" class="option-wrapper">
@@ -13,7 +13,7 @@
           v-for="(option, index) in filteredOptions"
           :key="index"
           class="option"
-          @click="toggleOptionSelect(option)"
+          @click="onOption(option)"
         >
           {{ option.label }}
         </li>
@@ -30,25 +30,19 @@ const props = defineProps({
     type: Array,
     default: () => []
   },
-  activeOption: {
+  modelValue: {
     type: Object,
     default: () => {}
   }
 })
 
-const emit = defineEmits(['update'])
+const emit = defineEmits(['update:modelValue'])
 
 const isDropdownVisible = ref(false)
 
 const dropDown = ref(null)
 
-const chosenOption = computed(() =>
-  props.activeOption.label ? props.activeOption : { label: 'Chose your card' }
-)
-
-// const chosenOption = computed(() => {
-//   return activeOption.value || 'Chose your card'
-// })
+const currentLabel = computed(() => props.modelValue.label ?? 'Chose your card')
 
 function closeDropDown(element) {
   if (!dropDown.value.contains(element.target)) {
@@ -60,13 +54,15 @@ function toggleDropdownVisible() {
   isDropdownVisible.value = !isDropdownVisible.value
 }
 
-function toggleOptionSelect(option) {
+function onOption(option) {
   toggleDropdownVisible()
-  emit('update', option)
+  // то то же самое, что, если бы мы в index.vue написали бы
+  // activeOption.value = option
+  emit('update:modelValue', option)
 }
 
 const filteredOptions = computed(() =>
-  props.options.filter((option) => option !== props.activeOption)
+  props.options.filter((option) => option.id !== props.modelValue.id)
 )
 
 onMounted(() => {
