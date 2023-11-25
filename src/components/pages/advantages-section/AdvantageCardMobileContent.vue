@@ -17,11 +17,14 @@ import CarouselMobile from '@/components/pages/advantages-section/CarouselMobile
 
 <style lang="scss" scoped>
 .mobile-card {
-  width: 95%;
-  margin: 0 auto;
+  margin: 10px;
   border-radius: 15px;
   padding: 30px 0;
   background-color: $yellow;
+
+  @include breakpoints-up(small) {
+    margin: 10px 50px 10px 50px;
+  }
 
   &__info {
     max-width: 380px;

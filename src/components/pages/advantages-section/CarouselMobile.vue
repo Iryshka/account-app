@@ -4,7 +4,7 @@
       <Slide class="carousel__slide" v-for="slide in slides" :key="slide.id">
         <h3 class="carousel__title">{{ slide.label }}</h3>
         <div class="carousel__item">
-          <img :src="slide.imageUrl" alt="" />
+          <img :src="slide.imageUrl" class="carousel__img" alt="" />
         </div>
       </Slide>
 
@@ -14,48 +14,6 @@
       </template>
     </Carousel>
   </div>
-  <!--  <div class="carousel-wrapper">-->
-  <!--    <div class="carousel">-->
-  <!--      <div class="carousel__track-container">-->
-  <!--        <ul ref="track" class="carousel__track">-->
-  <!--          <li ref="slide1" class="carousel__slide current-slide">-->
-  <!--            <img class="carousel__image" src="@/assets/images/mobile1.jpg" alt="" />-->
-  <!--          </li>-->
-  <!--          <li ref="slide2" class="carousel__slide">-->
-  <!--            <img class="carousel__image" src="@/assets/images/mobile2.jpg" alt="" />-->
-  <!--          </li>-->
-  <!--          <li ref="slide3" class="carousel__slide">-->
-  <!--            <img class="carousel__image" src="@/assets/images/mobile3.jpg" alt="" />-->
-  <!--          </li>-->
-  <!--          <li ref="slide4" class="carousel__slide">-->
-  <!--            <img class="carousel__image" src="@/assets/images/mobile4.jpg" alt="" />-->
-  <!--          </li>-->
-  <!--        </ul>-->
-  <!--      </div>-->
-  <!--      <div class="carousel__buttons">-->
-  <!--        <button-->
-  <!--          @click="onButtonClick('left')"-->
-  <!--          ref="carouselButtonLeft"-->
-  <!--          class="carousel__button carousel__button-left"-->
-  <!--        >-->
-  <!--          <img src="@/assets/images/arrowleft.svg" alt="" class="" />-->
-  <!--        </button>-->
-  <!--        <button-->
-  <!--          @click="onButtonClick('right')"-->
-  <!--          ref="carouselButtonRight"-->
-  <!--          class="carousel__button carousel__button-right"-->
-  <!--        >-->
-  <!--          <img src="@/assets/images/arrowright.svg" alt="" />-->
-  <!--        </button>-->
-  <!--      </div>-->
-
-  <!--      <div class="carousel__nav">-->
-  <!--        <button class="carousel__indicator carousel-slide"></button>-->
-  <!--        <button class="carousel__indicator"></button>-->
-  <!--        <button class="carousel__indicator"></button>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </template>
 
 <script setup>
@@ -94,15 +52,38 @@ const slides = [
 // }
 </script>
 
+<style lang="scss">
+.carousel {
+  &__prev {
+    left: -50px;
+  }
+
+  &__next {
+    right: -50px;
+  }
+
+  &__prev,
+  &__next {
+    display: none;
+
+    @include breakpoints-up(medium) {
+      display: block;
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .carousel {
   width: 310px;
   margin: 0 auto;
+
   &__item {
     min-height: 200px;
     width: 100%;
     color: $black;
-
     border-radius: 8px;
     justify-content: center;
     align-items: center;
@@ -119,6 +100,10 @@ const slides = [
     background-color: $yellow;
     display: flex;
     flex-direction: column;
+  }
+
+  &__img {
+    border-radius: 15px;
   }
 
   &__prev,

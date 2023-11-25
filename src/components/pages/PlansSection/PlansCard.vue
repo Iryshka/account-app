@@ -69,9 +69,10 @@ defineProps({
   background-color: $white;
   padding: 30px;
   margin: 20px;
+  transition: background-color 0.3s ease-in;
 
   &:hover {
-    border: 4px solid $pink;
+    background-color: $blue-light;
   }
 
   &-title {

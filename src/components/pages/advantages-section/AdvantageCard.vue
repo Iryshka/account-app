@@ -77,10 +77,6 @@ const props = defineProps({
     font-weight: bolder;
     line-height: 1.2;
     margin: 0 auto 10px auto;
-
-    @include breakpoints-up(medium) {
-      //font-size: 80px;
-    }
   }
 
   &__description {

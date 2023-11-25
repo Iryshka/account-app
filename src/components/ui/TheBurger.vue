@@ -1,16 +1,18 @@
 <template>
-  <div @click="onBurger" class="burger">
+  <div class="burger" @click="onBurger">
     <span class="first-line"></span>
     <span class="second-line"></span>
+    <span class="third-line"></span>
   </div>
 </template>
 
 <script setup>
-import { useLayoutStore } from '@/store/layout'
+import { defineEmits } from 'vue'
 
-const layoutStore = useLayoutStore()
+const emit = defineEmits(['burger'])
+
 function onBurger() {
-  layoutStore.toggleMobileNavigationDisplay()
+  emit('burger')
 }
 </script>
 
@@ -30,7 +32,8 @@ function onBurger() {
 }
 
 .first-line,
-.second-line {
+.second-line,
+.third-line {
   display: block;
   width: 100%;
   background-color: $white;

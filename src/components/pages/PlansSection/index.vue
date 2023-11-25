@@ -79,7 +79,8 @@ const cards = ref([
     thirdArticle: 'Documents yearly',
     fourthArticle: 'Documents yearly',
     fifthArticle: 'Documents yearly',
-    sixthArticle: 'Documents yearly'
+    sixthArticle: 'Documents yearly',
+    tariffs: [3, 4]
   },
   {
     id: 2,

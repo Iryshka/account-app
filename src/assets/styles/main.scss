@@ -14,13 +14,18 @@ body {
 
 .container {
   padding: 0 10px;
-  @include breakpoints-up(medium) {
-    padding: 0 30px;
+  @include breakpoints-up(x-small) {
+    padding: 0 15px;
   }
 
-  @include breakpoints-up(large) {
-    padding: 0 40px;
+  @include breakpoints-up(small) {
+    padding: 0 25px;
   }
+
+  @include breakpoints-up(medium) {
+    padding: 0 70px;
+  }
+
 }
 
 li {

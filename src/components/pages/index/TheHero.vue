@@ -1,5 +1,8 @@
 <template>
   <section class="hero container">
+    <div class="hero__figure hero__square"></div>
+    <div class="hero__figure hero__circle"></div>
+    <div class="hero__figure hero__line"></div>
     <h2 class="hero__title">Accounting for Estonian Company</h2>
     <p class="hero__paragraph">
       <span class="hero__paragraph-span">Don’t sweat yourself with Accounting!</span> Save time and
@@ -19,9 +22,45 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: calc(100dvh - 75px);
+  position: relative;
+  z-index: 0;
+  height: calc(100vh - $header-height);
   background-color: $black;
   text-align: center;
+
+  &__figure {
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  &__square {
+    background-image: url('@/assets/images/redsquare.svg');
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    right: 10%;
+    animation: clockwise 6s infinite linear;
+  }
+
+  &__circle {
+    top: 20%;
+    right: 20%;
+    background-image: url('@/assets/images/pinkcircle.svg');
+    width: 80px;
+    height: 80px;
+    animation: counterclockwise 6s infinite linear;
+  }
+
+  &__line {
+    top: 25%;
+    right: 22%;
+    background-color: $blue-light;
+    width: 15px;
+    height: 15px;
+    transform: rotate(-25deg);
+    animation: clockwise 6s infinite linear;
+  }
 
   &__title {
     font-size: 46px;
@@ -53,6 +92,24 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
 
   &__paragraph-span {
     display: block;
+  }
+}
+
+@keyframes clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterclockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 </style>

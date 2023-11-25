@@ -1,7 +1,14 @@
 <template>
   <li>
+    <input
+      class="radio"
+      type="radio"
+      :id="props.id"
+      name="images"
+      :value="props.image"
+      v-model="inputValue"
+    />
     <label :for="props.id">{{ props.label }}</label>
-    <input type="radio" :id="props.id" name="images" :value="props.image" v-model="inputValue" />
   </li>
 </template>
 

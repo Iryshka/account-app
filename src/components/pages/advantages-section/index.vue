@@ -7,32 +7,19 @@
         :key="id"
       >
         <advantage-card :id="id" :title="title" :description="description">
-          <div v-if="buttons" class="advantage-card-desktop">
-            <ul>
-              <advantage-radio-button
-                v-for="{ id, label, image } in buttons"
-                :id="id"
-                :key="id"
-                :label="label"
-                :image="image"
-                v-model="activeImage"
-              />
-            </ul>
-            <img :src="activeImage" alt="" />
-          </div>
-          <img v-else :src="image" alt="Advantage Image" class="image" />
+          <img :src="image" alt="Advantage Image" class="image" />
         </advantage-card>
       </li>
     </ul>
-    <advantage-card-mobile-content v-if="windowSize" />
-    <p>{{ windowSize }}</p>
+    <advantage-card-mobile-content v-if="windowSize === 'xxs' || windowSize === 'xs'" />
+    <advantage-card-desktop-content v-else />
+
     <common-plans />
   </section>
 </template>
 
 <script setup>
 import AdvantageCard from '@/components/pages/advantages-section/AdvantageCard.vue'
-import AdvantageRadioButton from '@/components/pages/advantages-section/AdvantageRadioButton.vue'
 import AdvantageCardMobileContent from '@/components/pages/advantages-section/AdvantageCardMobileContent.vue'
 import CommonPlans from '@/components/pages/PlansSection/CommonPlans.vue'
 
@@ -41,31 +28,7 @@ import useWindowSize from '@/composables/useWindowSize.js'
 const { windowSize } = useWindowSize()
 
 import { ref } from 'vue'
-
-const activeImage = ref(null)
-
-const buttonOptions = ref([
-  {
-    id: 1,
-    label: 'Connect your bank account',
-    image: 'src/assets/images/Group 11990.jpg'
-  },
-  {
-    id: 2,
-    label: 'Issue and send invoices to your clients',
-    image: 'src/assets/images/Group 11990 (1).jpg'
-  },
-  {
-    id: 3,
-    label: 'Upload invoices for the period',
-    image: 'src/assets/images/Group 11992.jpg'
-  },
-  {
-    id: 4,
-    label: 'Our accountant will create and file the report',
-    image: 'src/assets/images/Group 12010.jpg'
-  }
-])
+import AdvantageCardDesktopContent from '@/components/pages/advantages-section/AdvantageCardDesktopContent.vue'
 
 const cards = ref([
   {
@@ -98,17 +61,6 @@ const cards = ref([
     size: 'small',
     color: 'blue',
     position: 'reverse'
-  },
-  {
-    id: 4,
-    title: 'Unlimited Invoicing, Connection to Bank account, Multi-currency Accounting',
-    description:
-      'Will help you make accounting even easier. Spend less time and money on boring paperwork ',
-    image: 'src/assets/images/select-4-mobile.svg',
-    size: 'big',
-    color: 'yellow',
-    position: 'top-left',
-    buttons: buttonOptions.value
   }
 ])
 </script>
@@ -121,12 +73,10 @@ const cards = ref([
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
-  padding: 0 10px;
   background-color: $black;
 
   @include breakpoints-up(small) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 0 50px;
   }
 }
 
@@ -134,7 +84,6 @@ li {
   box-sizing: border-box;
   border-radius: 25px;
   list-style: none;
-
   padding: 60px 15px 0 15px;
   line-height: 1.4;
   width: 100%;
@@ -144,11 +93,7 @@ li {
   }
 
   @include breakpoints-up(medium) {
-    padding: 60px 135px 0 135px;
-  }
-
-  @include breakpoints-up(big) {
-    padding: 60px 165px 0 165px;
+    padding: 60px 115px 0 115px;
   }
 }
 
@@ -166,12 +111,15 @@ li {
 
 .image {
   width: 100%;
+  position: relative;
+  bottom: -10px;
 }
 
 // MODIFIER CLASSES
 
 .m-gradient {
   background: linear-gradient($green-light, $blue-light);
+  overflow: hidden;
 }
 
 .m-pink {
@@ -197,28 +145,6 @@ li {
 .m-start .advantage-card {
   @include breakpoints-up(small) {
     text-align: left;
-  }
-}
-
-.advantage-card-desktop {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-
-  ul {
-    flex: 1;
-    padding-bottom: 130px;
-  }
-
-  img {
-    flex: 1;
-    width: 600px;
-    position: absolute;
-    right: 0;
-  }
-
-  li {
-    padding: 20px 0;
   }
 }
 </style>

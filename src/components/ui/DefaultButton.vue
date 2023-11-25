@@ -26,15 +26,18 @@ function onButton() {
 
 <style scoped lang="scss">
 .button {
-  font-size: 18px;
-  padding: 8px 22px;
+  font-size: 16px;
+  padding: 6px 20px;
   white-space: nowrap;
   border: 2px solid transparent;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.3s ease;
 
-  &:hover {
+  @include breakpoints-up(medium) {
+    padding: 8px 22px;
+    font-size: 18px;
   }
 }
 
@@ -43,28 +46,34 @@ function onButton() {
   color: $black;
   border-color: transparent;
 
-  &:hover {
+  &:active {
+    transition: 0.3s ease;
+    background-color: $blue-light;
+    color: $black;
   }
 }
 
 .m-secondary {
-  padding: 20px 50px;
+  padding: 16px 44px;
   color: $white;
   background-color: $pink;
   border-radius: 12px;
   font-size: 22px;
+  transition: transform 0.3s ease;
   border: 5px solid transparent;
 
   &:hover {
-    background-color: white;
-    border: 5px solid $pink;
-    color: $pink;
+    transform: translateY(-2px);
   }
-}
 
-.m-tertiary {
-  padding: 15px 50px;
-  color: $white;
-  border-radius: 10px;
+  &:active {
+    transition: 0.3s ease;
+    background-color: $yellow;
+    color: $black;
+  }
+
+  @include breakpoints-up(medium) {
+    padding: 20px 50px;
+  }
 }
 </style>

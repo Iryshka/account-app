@@ -3,7 +3,6 @@
     @click="clickOptionSelect"
     :class="['plans__button', { 'm-active': modelValue.id === option.id }]"
   >
-    <label :for="props.id" class="plans__label">{{ props.option.label }}</label>
     <input
       type="radio"
       class="plans__input"
@@ -11,6 +10,7 @@
       :value="props.option"
       :id="props.id"
     />
+    <label :for="props.id" class="plans__label">{{ props.option.label }}</label>
   </div>
 </template>
 
@@ -49,11 +49,8 @@ function clickOptionSelect() {
     list-style: none;
   }
 
-  &__button.m-active {
-    background-color: lightpink;
-  }
-
   &__label {
+    display: inline-block;
     border: 2px solid $gray-light;
     background-color: $white;
     padding: 15px 30px;
@@ -61,6 +58,7 @@ function clickOptionSelect() {
     cursor: pointer;
     border-radius: 21px;
     text-align: center;
+    z-index: 90;
   }
 
   &__input[type='radio'] {
@@ -69,5 +67,8 @@ function clickOptionSelect() {
     width: 0;
     cursor: pointer;
   }
+}
+.m-active label {
+  background-color: $pink;
 }
 </style>

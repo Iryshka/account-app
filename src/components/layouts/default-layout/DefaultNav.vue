@@ -24,19 +24,17 @@ defineProps({
 <style scoped lang="scss">
 .default-nav {
   width: 70%;
-  font-size: 16px;
 
   &.mobile {
     position: fixed;
     top: 0;
     right: 0;
-
     width: 100%;
     height: 100vh;
     margin: 0;
     background-color: $black;
-    transform: translateX(100%);
-    transition: transform 0.2s ease-in;
+    //transform: translateX(0);
+    //transition: transform 0.2s ease-in;
   }
 }
 
@@ -46,6 +44,7 @@ defineProps({
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    height: 100vh;
   }
 }
 
@@ -64,16 +63,46 @@ defineProps({
   }
 }
 
-.active {
-  transform: translateX(0%);
-}
+//.active {
+//  transform: translateX(0%);
+//}
 
 .link {
   color: $white;
   text-decoration: none;
-  font-size: 18px;
-  padding: 15px;
+  font-size: 16px;
+  margin: 15px;
+
   cursor: pointer;
   white-space: nowrap;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -10px;
+    left: 0;
+    background-color: $blue-light;
+    transform-origin: bottom right;
+
+    transition: 0.3s ease-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  @include breakpoints-up(medium) {
+    font-size: 18px;
+  }
+
+  &:active {
+    color: $blue-light;
+  }
 }
 </style>
