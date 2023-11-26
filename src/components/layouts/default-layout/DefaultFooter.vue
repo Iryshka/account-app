@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">
+  <footer class="footer container">
     <div class="footer__grid">
       <div class="footer__services footer__nav">
         <h4 class="footer__title">Services</h4>
@@ -58,7 +58,7 @@
         </ul>
       </div>
     </div>
-    <div class="footer__additional">
+    <div class="footer__additional container">
       <address class="footer__address">
         <span>14772172 Tornimäe tn 5, 10145, Tallinn, Harju maakond. Register №16080939</span>
       </address>
@@ -77,31 +77,22 @@
 <style scoped lang="scss">
 .footer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
   background-color: $black;
   color: $gray-dark;
-  padding-top: 15px;
-
-  @include breakpoints-up(x-small) {
-    flex-direction: row;
-    padding: 15px 15px 0 15px;
-  }
-
-  @include breakpoints-up(small) {
-    padding: 15px 25px 0 15px;
-  }
+  padding: 15px;
 
   @include breakpoints-up(medium) {
-    padding: 15px 70px 0 70px;
+    flex-direction: row;
   }
 
   &__grid {
     flex: 2.5;
     display: grid;
-    gap: 2px;
+    column-gap: 50px;
     grid-template-columns: 1fr 1fr;
     padding-bottom: 15px;
 
@@ -120,7 +111,7 @@
     flex: 1;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
+    width: 95%;
   }
 
   &__link {

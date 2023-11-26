@@ -2,9 +2,9 @@
   <div class="header container">
     <a href="#" class="header__logo-link"><h1 class="logo">enty</h1></a>
     <Transition name="slide-fade">
-      <default-nav v-if="isMobileNavigationOpen" class="mobile" modifier="mobile" />
+      <default-nav v-if="isMobileNavigationOpen" class="mobile" />
     </Transition>
-    <default-nav class="desktop" modifier="desktop" />
+    <default-nav class="desktop" />
 
     <default-button theme="primary">Get Started!</default-button>
     <the-burger @burger="toggleMobileNavigationDisplay" />
@@ -22,6 +22,7 @@ const isMobileNavigationOpen = ref(false)
 
 function toggleMobileNavigationDisplay() {
   isMobileNavigationOpen.value = !isMobileNavigationOpen.value
+  console.log('Mobile Navigation State:', isMobileNavigationOpen.value)
 }
 </script>
 
@@ -42,15 +43,11 @@ function toggleMobileNavigationDisplay() {
 
 .logo {
   color: $white;
-  font-size: 26px;
+  font-size: 30px;
   margin: 0;
 
-  @include breakpoints-up(small) {
-    font-size: 30px;
-  }
-
   @include breakpoints-up(medium) {
-    font-size: 34px;
+    font-size: 36px;
   }
 }
 

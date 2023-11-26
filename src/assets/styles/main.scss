@@ -13,17 +13,21 @@ body {
 }
 
 .container {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   @include breakpoints-up(x-small) {
-    padding: 0 15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   @include breakpoints-up(small) {
-    padding: 0 25px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   @include breakpoints-up(medium) {
-    padding: 0 70px;
+    padding-left: 70px;
+    padding-right: 70px;
   }
 
 }

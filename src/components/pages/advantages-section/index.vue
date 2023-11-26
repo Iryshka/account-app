@@ -7,7 +7,9 @@
         :key="id"
       >
         <advantage-card :id="id" :title="title" :description="description">
-          <img :src="image" alt="Advantage Image" class="image" />
+          <div class="images">
+            <img :src="image" alt="Advantage Image" class="image" />
+          </div>
         </advantage-card>
       </li>
     </ul>
@@ -66,6 +68,11 @@ const cards = ref([
 </script>
 
 <style scoped lang="scss">
+.images {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .advantages {
   background-color: $black;
 }
@@ -110,9 +117,8 @@ li {
 }
 
 .image {
-  width: 100%;
+  width: 490px;
   position: relative;
-  bottom: -10px;
 }
 
 // MODIFIER CLASSES

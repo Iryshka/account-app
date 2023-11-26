@@ -33,8 +33,6 @@ defineProps({
     height: 100vh;
     margin: 0;
     background-color: $black;
-    //transform: translateX(0);
-    //transition: transform 0.2s ease-in;
   }
 }
 
@@ -42,9 +40,13 @@ defineProps({
   .list {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 28px;
     align-items: center;
     height: 100vh;
+    .link {
+      font-size: 19px;
+    }
   }
 }
 
@@ -63,16 +65,11 @@ defineProps({
   }
 }
 
-//.active {
-//  transform: translateX(0%);
-//}
-
 .link {
   color: $white;
   text-decoration: none;
   font-size: 16px;
   margin: 15px;
-
   cursor: pointer;
   white-space: nowrap;
   position: relative;

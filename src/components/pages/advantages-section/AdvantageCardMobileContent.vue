@@ -1,5 +1,5 @@
 <template>
-  <div class="mobile-card">
+  <div class="mobile-card container">
     <div class="mobile-card__info">
       <h3 class="mobile-card__title">
         Unlimited Invoicing, Connection to Bank account, Multi-currency Accounting
@@ -21,10 +21,6 @@ import CarouselMobile from '@/components/pages/advantages-section/CarouselMobile
   border-radius: 15px;
   padding: 30px 0;
   background-color: $yellow;
-
-  @include breakpoints-up(small) {
-    margin: 10px 50px 10px 50px;
-  }
 
   &__info {
     max-width: 380px;

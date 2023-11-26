@@ -80,7 +80,7 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
 
   &__paragraph {
     font-size: 22px;
-    color: $gray-dark;
+    color: $white;
     margin-bottom: 30px;
     @include breakpoints-up(small) {
       font-size: 24px;

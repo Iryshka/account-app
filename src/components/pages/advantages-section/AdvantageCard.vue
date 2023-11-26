@@ -5,9 +5,7 @@
   </div>
 
   <slot />
-  <div class="advantage-card-info">
-    <!--    <img v-if="imageLabel" :src="imageLabel" alt="Advantage Image" class="image" />-->
-  </div>
+  <div class="advantage-card-info"></div>
 </template>
 
 <script setup>
@@ -88,9 +86,5 @@ const props = defineProps({
       font-size: 24px;
     }
   }
-}
-
-.image {
-  width: 100%;
 }
 </style>

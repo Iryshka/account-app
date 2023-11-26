@@ -8,7 +8,7 @@
       :value="props.image"
       v-model="inputValue"
     />
-    <label :for="props.id">{{ props.label }}</label>
+    <label class="radio__text" :for="props.id">{{ props.label }}</label>
   </li>
 </template>
 
@@ -50,4 +50,8 @@ const emit = defineEmits(['update:modelValue'])
 // }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.radio__text {
+  font-size: 20px;
+}
+</style>
