@@ -47,6 +47,7 @@ function clickOptionSelect() {
     justify-content: center;
     align-items: center;
     list-style: none;
+    z-index: 0;
   }
 
   &__label {
@@ -59,6 +60,7 @@ function clickOptionSelect() {
     border-radius: 21px;
     text-align: center;
     z-index: 90;
+    transition: background-color 0.3s ease-in;
   }
 
   &__input[type='radio'] {

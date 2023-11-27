@@ -59,12 +59,7 @@ function onButton() {
   background-color: $pink;
   border-radius: 12px;
   font-size: 22px;
-  transition: transform 0.3s ease;
   border: 5px solid transparent;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
 
   &:active {
     transition: 0.3s ease;
