@@ -57,47 +57,46 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div class="footer__additional container">
-      <address class="footer__address">
-        <span>14772172 Tornimäe tn 5, 10145, Tallinn, Harju maakond. Register №16080939</span>
-      </address>
-      <aside class="footer__license">
-        Developed with ❤ by Entytech OÜ and Digirepresent Services OÜ (license № FIU000382)
-      </aside>
-      <aside class="footer__payment">
-        <span class="footer__payment-span">We accept </span>
-        <img src="@/assets/images/visa.svg" alt="" class="footer__img-visa" />
-        <img src="@/assets/images/mastercard.svg" alt="" class="footer__img-mastercard" />
-      </aside>
+      <div class="footer__additional">
+        <address class="footer__address">
+          <span>14772172 Tornimäe tn 5, 10145, Tallinn, Harju maakond. Register №16080939</span>
+        </address>
+        <aside class="footer__license">
+          Developed with ❤ by Entytech OÜ and Digirepresent Services OÜ (license № FIU000382)
+        </aside>
+        <aside class="footer__payment">
+          <span class="footer__payment-span">We accept </span>
+          <img src="@/assets/images/visa.svg" alt="" class="footer__img-visa" />
+          <img src="@/assets/images/mastercard.svg" alt="" class="footer__img-mastercard" />
+        </aside>
+      </div>
     </div>
   </footer>
 </template>
 <script setup></script>
 <style scoped lang="scss">
 .footer {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
   background-color: $black;
   color: $gray-dark;
-  padding: 15px;
+  padding: 25px 0 25px 0;
 
-  @include breakpoints-up(medium) {
-    flex-direction: row;
+  @include breakpoints-up(large) {
+    font-size: 20px;
   }
 
   &__grid {
-    flex: 2.5;
     display: grid;
-    column-gap: 50px;
     grid-template-columns: 1fr 1fr;
-    padding-bottom: 15px;
+    grid-auto-rows: minmax(120px, auto);
+    gap: 10px;
+    line-height: 1.6;
 
     @include breakpoints-up(small) {
-      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    @include breakpoints-up(medium) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
     }
   }
 
@@ -107,17 +106,22 @@
   }
 
   &__additional {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 10px;
-    width: 95%;
+    grid-column: 1/3;
+
+    @include breakpoints-up(medium) {
+      grid-column: 5/6;
+    }
   }
 
   &__link {
     color: $gray-dark;
     text-decoration: none;
     padding-bottom: 20px;
+    transition: color 0.3s ease-in;
+  }
+
+  &__contact a:hover {
+    color: $blue-light;
   }
 }
 </style>

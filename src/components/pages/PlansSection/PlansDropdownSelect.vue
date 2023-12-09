@@ -85,20 +85,26 @@ onBeforeMount(() => {
 
   &-selected-option {
     padding: 16px;
-    border: 1px solid $gray-dark;
+    border: 2px solid $pink;
     border-radius: 8px;
   }
 }
 
 .option-wrapper {
+  position: absolute;
   max-width: 230px;
   margin: 0 auto;
+
+  border-radius: 8px;
 }
 .option {
+  margin-top: 2px;
   padding: 16px;
-  border: 1px solid $gray-light;
+  width: 198px;
   border-radius: 8px;
-  margin: 0 auto;
+  background-color: $gray-light;
+  border: 1px solid $gray-dark;
+  //margin: 0 auto;
   text-align: center;
 
   &:hover {

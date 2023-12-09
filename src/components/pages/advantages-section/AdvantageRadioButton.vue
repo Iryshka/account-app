@@ -55,34 +55,90 @@ const emit = defineEmits(['update:modelValue'])
 .radio__wrapper {
   input[type='radio'] {
     position: absolute;
-    opacity: 0;
+    z-index: -10;
 
     + .radio__text {
+      display: inline-block;
+      padding-left: 40px;
+      width: 320px;
       position: relative;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
 
-      &:before {
+      @include breakpoints-up(medium) {
+        font-size: 20px;
+        line-height: 30px;
+      }
+
+      @include breakpoints-up(large) {
+        font-size: 26px;
+        width: 450px;
+        padding-left: 70px;
+      }
+
+      &::before,
+      &::after {
         content: '';
         border-radius: 50%;
-        border: 4px solid darken($black, 25%);
-        display: inline-block;
-        width: 25px;
-        height: 25px;
-        position: relative;
-        background-color: $yellow;
-        top: -0.2em;
-        margin-right: 20px;
-        vertical-align: top;
+        margin-right: 25px;
+        display: block;
+        background-color: transparent;
         cursor: pointer;
-        text-align: center;
-        transition: all 250ms ease;
+        position: absolute;
+        transition: background-color 0.2s ease;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        border: 2px solid darken($black, 25%);
+        width: 28px;
+        height: 28px;
+        right: calc(80% + 20px);
+
+        @include breakpoints-up(medium) {
+          width: 34px;
+          height: 34px;
+          right: calc(80% + 20px);
+        }
+
+        @include breakpoints-up(large) {
+          width: 47px;
+          height: 47px;
+          right: calc(80% + 20px);
+        }
+      }
+
+      &::after {
+        background-color: transparent;
+        width: 13px;
+        height: 13px;
+        right: calc(80% + 28.5px);
+
+        @include breakpoints-up(medium) {
+          width: 17px;
+          height: 17px;
+          right: calc(80% + 29.5px);
+        }
+
+        @include breakpoints-up(large) {
+          background-color: transparent;
+          width: 29px;
+          height: 29px;
+          right: calc(80% + 30px);
+        }
       }
     }
 
     &:checked {
       + .radio__text {
-        &:before {
+        &::before {
+          background-color: transparent;
+        }
+
+        &::after {
           background-color: $black;
-          box-shadow: inset 0 0 0 3px $black;
         }
       }
     }
@@ -95,15 +151,6 @@ const emit = defineEmits(['update:modelValue'])
       }
     }
 
-    &:disabled {
-      + .radio__text {
-        &:before {
-          box-shadow: inset 0 0 0 4px $black;
-          border-color: darken($black, 25%);
-          background: darken($black, 25%);
-        }
-      }
-    }
     + .radio__text {
       &:empty {
         &:before {
@@ -111,26 +158,6 @@ const emit = defineEmits(['update:modelValue'])
         }
       }
     }
-  }
-}
-.radio__text {
-  font-size: 20px;
-
-  &:after {
-    content: '';
-    border-radius: 50%;
-    background-color: red;
-    display: inline-block;
-    width: 27px;
-    height: 27px;
-    position: relative;
-
-    transform: translate(-50%, -50%);
-    vertical-align: top;
-    cursor: pointer;
-    text-align: center;
-    transition: all 250ms ease;
-    opacity: 1;
   }
 }
 </style>

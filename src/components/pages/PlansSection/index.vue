@@ -15,7 +15,7 @@
     </ul>
 
     <ul class="plans__list">
-      <li v-for="card in cards" :key="card.id" class="plans__item">
+      <li v-for="card in filteredCards" :key="card.id" class="plans__item">
         <plans-card
           :title="card.title"
           :price="card.price"
@@ -25,7 +25,7 @@
           :thirdArticle="card.thirdArticle"
           :fourthArticle="card.fourthArticle"
           :fifthArticle="card.fifthArticle"
-          :sixthArticle="card.fifthArticle"
+          :sixthArticle="card.sixthArticle"
         />
       </li>
     </ul>
@@ -36,17 +36,12 @@ import PlansCard from '@/components/pages/PlansSection/PlansCard.vue'
 import PlansDropdownSelect from '@/components/pages/PlansSection/PlansDropdownSelect.vue'
 import PlansRadioButton from '@/components/pages/PlansSection/PlansRadioButton.vue'
 
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
-const activeOption = ref({})
-
-function updateSelect(option) {
-  activeOption.value = option
-}
-
-function updateRadioButton(option) {
-  activeOption.value = option
-}
+onMounted(() => {
+  const result = 'answer'
+  console.log('zapros')
+})
 
 const options = ref([
   {
@@ -67,48 +62,59 @@ const options = ref([
   }
 ])
 
+const activeOption = ref({})
+
 const cards = ref([
   {
     id: 1,
     title: 'Standard',
     price: '42 euro / month',
     description:
-      "Covers the necessary accounting needs. Choose it if you don't have VAT number nad your workflow is small.",
-    firstArticle: 'Documents yearly',
-    secondArticle: 'Documents yearly',
-    thirdArticle: 'Documents yearly',
-    fourthArticle: 'Documents yearly',
-    fifthArticle: 'Documents yearly',
-    sixthArticle: 'Documents yearly',
-    tariffs: [3, 4]
+      "Covers the necessary accounting needs. Choose it if you don't have a VAT number and your workflow is small.",
+    firstArticle: 'Invoice and Expense Tracking',
+    secondArticle: 'Bank Reconciliation',
+    thirdArticle: 'Financial Statements',
+    fourthArticle: 'Tax Preparation Assistance',
+    fifthArticle: 'Customer Support (Email)',
+    sixthArticle: 'Basic Reporting Features',
+    tariffs: [1, 2, 4]
   },
   {
     id: 2,
     title: 'Pro',
-    price: '42 euro / month',
+    price: '59 euro / month',
     description:
-      "Covers the necessary accounting needs. Choose it if you don't have VAT number nad your workflow is small.",
-    firstArticle: 'Documents yearly',
-    secondArticle: 'Documents yearly',
-    thirdArticle: 'Documents yearly',
-    fourthArticle: 'Documents yearly',
-    fifthArticle: 'Documents yearly',
-    sixthArticle: 'Documents yearly'
+      'Ideal for growing businesses with more complex needs. Suitable if you have a VAT number.',
+    firstArticle: 'All Standard features',
+    secondArticle: 'Advanced Reporting and Analytics',
+    thirdArticle: 'Multi-currency Support',
+    fourthArticle: 'Priority Customer Support',
+    fifthArticle: 'Integration with 3rd Party Apps',
+    sixthArticle: 'Customizable Templates',
+    tariffs: [1, 4]
   },
   {
     id: 3,
     title: 'E-commerce',
-    price: '42 euro / month',
+    price: '79 euro / month',
     description:
-      "Covers the necessary accounting needs. Choose it if you don't have VAT number nad your workflow is small.",
-    firstArticle: 'Documents yearly',
-    secondArticle: 'Documents yearly',
-    thirdArticle: 'Documents yearly',
-    fourthArticle: 'Documents yearly',
-    fifthArticle: 'Documents yearly',
-    sixthArticle: 'Documents yearly'
+      'Tailored for online businesses. Includes features to manage e-commerce transactions.',
+    firstArticle: 'All Standard features',
+    secondArticle: 'E-commerce Transaction Tracking',
+    thirdArticle: 'Inventory Management',
+    fourthArticle: 'Order Processing',
+    fifthArticle: 'E-commerce Reporting',
+    sixthArticle: '24/7 E-commerce Support',
+    tariffs: [3]
   }
 ])
+
+const filteredCards = computed(() => {
+  if (!activeOption.value.id) {
+    return cards.value
+  }
+  return cards.value.filter((card) => card.tariffs.includes(activeOption.value.id))
+})
 </script>
 <style scoped lang="scss">
 .plans {
@@ -169,5 +175,15 @@ const cards = ref([
   @include breakpoints-up(small) {
     display: none;
   }
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>

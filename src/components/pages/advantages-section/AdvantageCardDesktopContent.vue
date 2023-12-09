@@ -73,31 +73,55 @@ onMounted(() => setDefaultState())
 .desktop-card {
   display: flex;
   flex-direction: column;
-  position: relative;
   background-color: $yellow;
-  margin: 10px 0 0 50px;
-  height: 800px;
+  margin: 10px 0 0 25px;
+  min-height: 650px;
   border-bottom-left-radius: 25px;
   border-top-left-radius: 25px;
   overflow: hidden;
+
+  @include breakpoints-up(medium) {
+    margin-left: 70px;
+  }
+
+  @include breakpoints-up(large) {
+    margin-left: 150px;
+    padding-bottom: 45px;
+  }
 
   &__info {
     text-align: center;
     padding-top: 60px;
     width: 700px;
     margin: 0 auto;
+
+    @include breakpoints-up(large) {
+      width: 100%;
+    }
   }
 
   &__title {
     font-size: 30px;
     font-weight: bolder;
     line-height: 1.2;
+
+    @include breakpoints-up(large) {
+      font-size: 38px;
+    }
   }
 
   &__description {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.4;
-    margin-bottom: 55px;
+    margin: 20px 0 55px 0;
+
+    @include breakpoints-up(medium) {
+      font-size: 24px;
+    }
+
+    @include breakpoints-up(large) {
+      font-size: 28px;
+    }
   }
 
   &__image {
@@ -107,20 +131,33 @@ onMounted(() => setDefaultState())
   }
 
   &__img {
-    border-radius: 35px;
+    position: absolute;
+    left: -700px;
+    border-radius: 50px;
+
+    @include breakpoints-up(small) {
+      left: -820px;
+    }
+
+    @include breakpoints-up(medium) {
+      left: -800px;
+    }
+
+    @include breakpoints-up(large) {
+      left: -600px;
+    }
   }
 
   ul {
     flex: 1;
-    padding-bottom: 130px;
-  }
-
-  img {
-    width: 600px;
   }
 
   li {
-    padding: 20px 0;
+    padding: 10px 0;
+
+    @include breakpoints-up(medium) {
+      padding: 20px 0;
+    }
   }
 }
 </style>

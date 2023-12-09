@@ -34,7 +34,6 @@ function toggleMobileNavigationDisplay() {
   align-items: center;
   height: 75px;
   background-color: $black;
-  font-size: 16px;
 
   &__logo-link {
     text-decoration: none;

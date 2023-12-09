@@ -17,13 +17,12 @@ import CarouselMobile from '@/components/pages/advantages-section/CarouselMobile
 
 <style lang="scss" scoped>
 .mobile-card {
-  margin: 10px;
+  margin: 10px 10px 0 15px;
   border-radius: 15px;
   padding: 30px 0;
   background-color: $yellow;
 
   &__info {
-    max-width: 380px;
     margin: 0 auto;
     text-align: center;
   }
@@ -34,6 +33,11 @@ import CarouselMobile from '@/components/pages/advantages-section/CarouselMobile
     line-height: 1.2;
     margin-bottom: 20px;
     color: $black;
+  }
+
+  &__description {
+    font-size: 20px;
+    line-height: 28px;
   }
 }
 </style>

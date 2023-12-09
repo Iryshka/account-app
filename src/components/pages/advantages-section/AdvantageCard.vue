@@ -65,7 +65,7 @@ const props = defineProps({
       max-width: 800px;
     }
 
-    @include breakpoints-up(big) {
+    @include breakpoints-up(large) {
       max-width: 1000px;
     }
   }
@@ -75,6 +75,10 @@ const props = defineProps({
     font-weight: bolder;
     line-height: 1.2;
     margin: 0 auto 10px auto;
+
+    @include breakpoints-up(large) {
+      font-size: 38px;
+    }
   }
 
   &__description {
@@ -84,6 +88,10 @@ const props = defineProps({
 
     @include breakpoints-up(medium) {
       font-size: 24px;
+    }
+
+    @include breakpoints-up(large) {
+      font-size: 28px;
     }
   }
 }

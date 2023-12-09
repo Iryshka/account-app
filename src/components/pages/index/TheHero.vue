@@ -66,10 +66,10 @@ import DefaultButton from '@/components/ui/DefaultButton.vue'
     font-size: 46px;
     color: $white;
     margin-bottom: 40px;
-    @include breakpoints-up(small) {
+    @include breakpoints-up(medium) {
       font-size: 52px;
     }
-    @include breakpoints-up(medium) {
+    @include breakpoints-up(large) {
       font-size: 68px;
     }
   }

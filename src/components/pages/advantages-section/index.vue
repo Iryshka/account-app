@@ -96,11 +96,11 @@ li {
   width: 100%;
 
   @include breakpoints-up(small) {
-    padding: 60px 75px 0 75px;
+    padding: 60px 35px 0 35px;
   }
 
   @include breakpoints-up(medium) {
-    padding: 60px 115px 0 115px;
+    padding: 60px 55px 0 55px;
   }
 }
 
@@ -117,8 +117,15 @@ li {
 }
 
 .image {
-  width: 490px;
-  position: relative;
+  width: 100%;
+
+  @include breakpoints-up(small) {
+    width: 440px;
+  }
+
+  @include breakpoints-up(medium) {
+    width: 600px;
+  }
 }
 
 // MODIFIER CLASSES
@@ -130,10 +137,12 @@ li {
 
 .m-pink {
   background-color: $pink;
+  overflow: hidden;
 }
 
 .m-blue {
   background-color: $blue-light;
+  overflow: hidden;
 }
 
 .m-yellow {

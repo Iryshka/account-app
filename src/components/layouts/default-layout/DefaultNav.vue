@@ -44,6 +44,7 @@ defineProps({
     gap: 28px;
     align-items: center;
     height: 100vh;
+
     .link {
       font-size: 19px;
     }
@@ -96,6 +97,10 @@ defineProps({
 
   @include breakpoints-up(medium) {
     font-size: 18px;
+  }
+
+  @include breakpoints-up(large) {
+    font-size: 20px;
   }
 
   &:active {

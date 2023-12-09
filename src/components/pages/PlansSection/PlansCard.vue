@@ -11,7 +11,7 @@
       <p class="plans__card-article">{{ fifthArticle }}</p>
       <p class="plans__card-article">{{ sixthArticle }}</p>
     </div>
-    <default-button theme="secondary">Choose Plan</default-button>
+    <default-button theme="tertiary">Choose Plan</default-button>
   </div>
 </template>
 <script setup>
@@ -63,6 +63,8 @@ defineProps({
 
 <style scoped lang="scss">
 .plans__card {
+  display: flex;
+  flex-direction: column;
   border: 4px solid transparent;
   border-radius: 20px;
   width: 300px;
@@ -89,6 +91,10 @@ defineProps({
   &-description {
     color: $gray-dark;
     font-size: 15px;
+  }
+
+  &-articles {
+    padding-bottom: 20px;
   }
 
   &-article {

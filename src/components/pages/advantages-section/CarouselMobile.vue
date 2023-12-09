@@ -42,14 +42,6 @@ const slides = [
     imageUrl: 'src/assets/images/mobile4.jpg'
   }
 ]
-// import { ref } from 'vue'
-//
-// const carouselButtonLeft = ref(null)
-// const carouselButtonRight = ref(null)
-
-// function onButtonClick(direction) {
-//   console.log(direction === 'right' ? 'right' : 'left')
-// }
 </script>
 
 <style lang="scss">

@@ -36,6 +36,11 @@ function clickOptionSelect() {
   // то то же самое, что, если бы мы в index.vue написали бы
   // activeOption.value = option
   emit('update:modelValue', props.option)
+  if (props.option.id === 1) {
+    console.log('1')
+  } else {
+    console.log('2')
+  }
 }
 </script>
 
@@ -60,7 +65,11 @@ function clickOptionSelect() {
     border-radius: 21px;
     text-align: center;
     z-index: 90;
-    transition: background-color 0.3s ease-in;
+    transition: background-color 0.3s ease-in, box-shadow 0.3s ease-in;
+
+    &:hover {
+      box-shadow: 0 3px 10px pink;
+    }
   }
 
   &__input[type='radio'] {
