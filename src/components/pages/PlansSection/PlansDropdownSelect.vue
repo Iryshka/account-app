@@ -104,7 +104,6 @@ onBeforeMount(() => {
   border-radius: 8px;
   background-color: $gray-light;
   border: 1px solid $gray-dark;
-  //margin: 0 auto;
   text-align: center;
 
   &:hover {

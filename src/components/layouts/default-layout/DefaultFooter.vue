@@ -92,11 +92,13 @@
     line-height: 1.6;
 
     @include breakpoints-up(small) {
-      gap: 25px;
+      gap: 55px;
     }
 
     @include breakpoints-up(medium) {
       grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+      gap: 10px;
+
     }
   }
 
@@ -107,6 +109,11 @@
 
   &__additional {
     grid-column: 1/3;
+
+    @include breakpoints-up(small) {
+      grid-column: 1/6;
+
+    }
 
     @include breakpoints-up(medium) {
       grid-column: 5/6;

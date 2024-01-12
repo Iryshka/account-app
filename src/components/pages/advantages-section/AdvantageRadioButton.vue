@@ -45,10 +45,6 @@ const inputValue = computed({
 })
 
 const emit = defineEmits(['update:modelValue'])
-
-// function onButton() {
-//   emit('update:modelValue', props.image)
-// }
 </script>
 
 <style scoped lang="scss">

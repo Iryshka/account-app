@@ -10,5 +10,4 @@
 import TheHero from '@/components/pages/index/TheHero.vue'
 import AdvantagesSection from '@/components/pages/advantages-section/index.vue'
 import PlansSection from '@/components/pages/PlansSection/index.vue'
-import DefaultFooter from '@/components/layouts/default-layout/DefaultFooter.vue'
 </script>

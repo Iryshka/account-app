@@ -10,8 +10,4 @@
 import DefaultLayout from '@/layouts/default-layout.vue'
 </script>
 
-<style lang="scss">
-//body {
-//  margin: 0;
-//}
-</style>
+<style lang="scss"></style>

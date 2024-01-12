@@ -12,17 +12,17 @@ const router = createRouter({
       path: '/',
       name: 'index',
       component: index
-    },
-    {
-      path: '/advantages',
-      name: 'advantages',
-      component: advantages
-    },
-    {
-      path: '/plans',
-      name: 'plans',
-      component: plans
     }
+    // {
+    //   path: '/advantages',
+    //   name: 'advantages',
+    //   component: advantages
+    // },
+    // {
+    //   path: '/plans',
+    //   name: 'plans',
+    //   component: plans
+    // }
   ]
 })
 

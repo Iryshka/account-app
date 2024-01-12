@@ -132,7 +132,7 @@ onMounted(() => setDefaultState())
 
   &__img {
     position: absolute;
-    left: -700px;
+    left: -600px;
     border-radius: 50px;
 
     @include breakpoints-up(small) {
@@ -144,7 +144,7 @@ onMounted(() => setDefaultState())
     }
 
     @include breakpoints-up(large) {
-      left: -600px;
+      left: -500px;
     }
   }
 
