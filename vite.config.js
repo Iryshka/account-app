@@ -17,5 +17,6 @@ export default defineConfig({
         additionalData: '@import "@/assets/styles/index.scss";'
       }
     }
-  }
+  },
+  base: '/account-app/'
 })
