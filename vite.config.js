@@ -5,6 +5,11 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+    format: 'esm' // Set the output format to "esm"
+  },
   plugins: [vue()],
   resolve: {
     alias: {
@@ -18,5 +23,6 @@ export default defineConfig({
       }
     }
   },
-  base: '/account-app/'
+
+  base: import.meta.env.MODE === 'production' ? '/account-app/' : '/'
 })
