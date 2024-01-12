@@ -1,16 +1,24 @@
-# account
+# Landing page for the accounting company :pencil:
 
-This template should help get you started developing with Vue 3 in Vite.
+This website introduces accounting services where user can easily learn about services provided and explore different options based on the tariffs they choose. 
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+[Webstorm](https://code.visualstudio.com/](https://www.jetbrains.com/webstorm/)) + [Vite](https://vitejs.dev/)
 
-## Customize configuration
+## Requirements
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[Node.js](https://nodejs.org/en) v18.14.0 or newer
 
 ## Project Setup
+
+### Clone the repo
+
+```sh
+git clone https://github.com/Iryshka/account-app.git
+```
+
+### Install project dependencies 
 
 ```sh
 npm install
@@ -22,14 +30,18 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```
 
-### Lint with [ESLint](https://eslint.org/)
+## Features 
 
-```sh
-npm run lint
-```
+- Vue Router Included.
+- Vite.
+- Modules/Components organized across folders.
+- Pre-configured with code quality tools: Prettier, ESLint
+
+
+## Contributing
+
+I welcome any feedback or contributions. Feel free to open an issue or submit a pull request for suggestions, bug reports, or feature requests.
+
+
